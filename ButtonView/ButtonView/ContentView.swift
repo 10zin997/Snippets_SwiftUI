@@ -7,23 +7,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var pressed = false
+
+    @State var tapped = 0
     var body: some View {
         VStack {
             Button {
-                pressed.toggle()
+                tapped += 1
             } label: {
-                    Text("Press Me")
+                    Text("Press \(tapped) times")
+                  
+                    .frame(width: 300, height: 100, alignment: .center) //frame must be directly modifying the text
+                    .padding()
+                    .background(Color.orange)
+                 
             }
-            .frame(width: 200, height: 100, alignment: .center)
-            .background(Color.orange)
             .contentShape(Rectangle())
-            .allowsHitTesting(true) // make sure the button can receive touch events
-            
-            Text(pressed ? "pressed" : "not pressed" )
         }
-        .padding()
-        .background(Color.clear) // make sure the background is not blocking touch events
     }
 }
 
